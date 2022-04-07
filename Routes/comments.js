@@ -19,9 +19,9 @@ router.post("/", async (req, res) => {
 })
 
 
-router.get("/", async (req, res) => {
+router.get("/:videoId", async (req, res) => {
     try{
-        let comments = await Comment.find()
+        let comments = await Comment.find({videoId: req.params.videoId})
         if (!comments) return res.status(400).send(`No products in this collection`);
         return res.status(200).send(comments)
     } catch (error){

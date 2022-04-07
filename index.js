@@ -11,7 +11,7 @@ connectDb();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api/comments', comments, replies);
+app.use('/api/', comments, replies);
 
 
 const PORT = process.env.PORT || 5000;
