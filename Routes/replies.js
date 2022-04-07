@@ -1,5 +1,5 @@
 const { Comment, validateComment } = require('../models/comment');
-const { Reply, validateReply } = require("../Models/reply")
+const { Reply, validateReply } = require("../models/reply")
 const express = require("express");
 const { Router } = require('express');
 const router = express.Router();
@@ -22,3 +22,5 @@ try {
     return res.status(500).send(`Internal Server Error: ${error}`)
 }
 })
+
+module.exports = router

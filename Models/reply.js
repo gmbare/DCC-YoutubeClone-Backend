@@ -14,6 +14,7 @@ function validateReply(reply){
     const schema = Joi.object({
         text:Joi.string().required().min(1).max(255),
     })
+    return schema.validate(reply)
 }
 
 module.exports={

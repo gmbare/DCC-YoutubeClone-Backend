@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
-const req = require("express/lib/request");
 const {replySchema} = require('./reply');
 
 const commentSchema = new mongoose.Schema({
@@ -9,7 +8,7 @@ const commentSchema = new mongoose.Schema({
 	dislikes:{type:Number, default:0},
 	date:{type:Date, default:(Date.now())},
 	replies:{type:[replySchema], default:[]},
-    // replies:[{type:replySchema}]
+    //replies:[{type:replySchema}]
 	videoId:{type:String}
 });
 
