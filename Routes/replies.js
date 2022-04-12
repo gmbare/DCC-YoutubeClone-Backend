@@ -24,7 +24,7 @@ try {
 })
 
 //PUT likes and dislikes
-router.put("/:commentId/:replyId", async(req, res) => {
+router.put("/:commentId/replies/:replyId", async(req, res) => {
     try{
 
         let comment = await Comment.findById(req.params.commentId);
