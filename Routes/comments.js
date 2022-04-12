@@ -18,6 +18,24 @@ router.post("/", async (req, res) => {
     }
 })
 
+router.put("/:commentId", async(req, res) => {
+try{
+    const {error} = validateComment(req.body);
+    if (error) return res.status(400).send(error);
+
+    let likes = await Comment.findByIdAndUpdate(req.params.commentId, req.body, {new:true})
+    if(!likes) return res.status(400).send(`Could not find any comments with the ID of ${req.params.commentId}`)
+
+    return res.send(likes)
+
+}catch (error){
+    return res.status(500).send(`internal server errror: ${error}`)
+}
+
+
+
+
+})
 
 router.get("/:videoId", async (req, res) => {
     try{
