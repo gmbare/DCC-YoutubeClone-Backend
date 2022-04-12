@@ -13,6 +13,8 @@ const Reply = mongoose.model("Reply", replySchema);
 function validateReply(reply){
     const schema = Joi.object({
         text:Joi.string().required().min(1).max(255),
+        likes:Joi.number(),
+        dislikes:Joi.number()
     })
     return schema.validate(reply)
 }

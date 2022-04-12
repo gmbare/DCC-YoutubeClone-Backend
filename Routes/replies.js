@@ -23,4 +23,25 @@ try {
 }
 })
 
-module.exports = router
+//PUT likes and dislikes
+router.put("/:commentId/:replyId", async(req, res) => {
+    try{
+
+        let comment = await Comment.findById(req.params.commentId);
+        if(!comment) return res.status(400).send(`Could not find any comments with the ID of ${req.params.commentId}`)
+    
+        const reply = comment.replies.id(req.params.replyId);
+        if (!reply)
+        return res.status(400).send(`There is no reply.`);
+        reply.likes = req.body.likes;
+        reply.dislikes = req.body.dislikes;
+
+        await comment.save();
+        return res.send(reply)
+    
+    }catch (error){
+        return res.status(500).send(`internal server errror: ${error}`)
+    }
+})
+
+module.exports = router;

@@ -9,14 +9,14 @@ const commentSchema = new mongoose.Schema({
 	date:{type:Date, default:(Date.now())},
 	replies:{type:[replySchema], default:[]},
     //replies:[{type:replySchema}]
-	videoId:{type:String, required:true}
+	videoId:{type:String}
 });
 
 
 function validateComment(comment){
     const schema = Joi.object({
         text:Joi.string().required().min(1).max(255),
-        videoId:Joi.string().required(),
+        videoId:Joi.string(),
         likes:Joi.number(),
         dislikes:Joi.number()
     })
